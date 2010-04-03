@@ -1,11 +1,11 @@
 Gem::Specification.new do |s|
     s.platform  =  Gem::Platform::RUBY
-    s.name      =  "munger"
-    s.version   =  "0.1.4.2"
+    s.name      =  "elskwid-munger"
+    s.version   =  "0.1.4.1"
     s.authors   =  ['Scott Chacon', 'Brandon Mitchell', 'Don Morrison', 'Eric Lindvall']
-    s.email     =  "schacon@gmail.com"
-    s.summary   =  "A reporting engine in Ruby"
-    s.homepage  =  "http://github/schacon/munger"
+    s.email     =  "elskwid@gmail.com"
+    s.summary   =  "A reporting engine in Ruby - the elskwid fork!"
+    s.homepage  =  "http://github.com/elskwid/munger"
     s.has_rdoc  =  true
     s.files = ["munger.gemspec",
                "Rakefile",
