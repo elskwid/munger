@@ -34,4 +34,10 @@ describe Munger::Item do
     item['key1'].should eql('value1')
     item[:key2].should eql('value2')
   end
+  
+  it "should return a hash after being initialized with a hash" do
+    hash = {:key1 => "value1", :key2 => "value2"}
+    Munger::Item.ensure(hash).to_hash.should be_kind_of(Hash)
+  end
+  
 end

@@ -51,7 +51,7 @@ module Munger #:nodoc:
       default = options[:default] || nil
       @data.each_with_index do |row, index|
         if block_given?
-          col_data = yield clean_data(row)
+          col_data = yield Item.ensure(row)
         else
           col_data = default
         end
@@ -169,16 +169,16 @@ module Munger #:nodoc:
       
       data_hash.each do |row_key, row_hash|
         new_row = {}
-        row_hash.each do |column_key, data|
+        row_hash.each do |column_key, row_data|
           column_key.each do |ckey|
-            new_row.merge!(data[:data])
+            new_row.merge!(row_data[:data])
             case aggregation
             when :average
-              new_row[ckey] = (data[:sum] / data[:count])  
+              new_row[ckey] = (row_data[:sum] / row_data[:count])
             when :count
-              new_row[ckey] = data[:count]  
+              new_row[ckey] = row_data[:count]
             else            
-              new_row[ckey] = data[:sum]              
+              new_row[ckey] = row_data[:sum]
             end
             new_keys[ckey] = true
           end

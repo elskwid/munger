@@ -5,6 +5,7 @@ require 'spec'
 require 'fileutils'
 require 'logger'
 require 'pp'
+require 'date'
 
 require 'rspec_hpricot_matchers'
 Spec::Runner.configure do |config|
