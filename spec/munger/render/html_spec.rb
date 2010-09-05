@@ -21,6 +21,18 @@ describe Munger::Render::Html do
     html.should have_tag('tr', :count => count + 1) # rows plus header
   end
   
+  it "should render a thead section for the table" do
+    @render = Munger::Render::Html.new(@report.process)
+    html = @render.render
+    html.should have_tag('thead', :count => 1)
+  end
+
+  it "should render a tbody section for the table" do
+    @render = Munger::Render::Html.new(@report.process)
+    html = @render.render
+    html.should have_tag('tbody', :count => 1)
+  end
+  
   it "should accept a custom table class" do
     rep = Munger::Render::Html.new(@report.process, :classes => {:table => 'helloClass'})
     html = rep.render
