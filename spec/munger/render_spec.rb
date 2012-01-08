@@ -13,6 +13,16 @@ describe Munger::Render do
     html.should have_tag('table')
   end
   
+  it "should render sortable html" do
+    html = Munger::Render.to_sortable_html(@report, :sort => "name", :order => "asc", :url => "test")
+    html.should have_tag("table")
+    html.should have_tag("th.unsorted")
+    html.should have_tag("th.sorted")
+    html.should have_tag("th.sorted-asc")
+    html.should have_tag('a[@href="test?order=asc&sort=score"', /score/)
+    html.should have_tag('a[@href="test?order=desc&sort=name"', /name/)
+  end
+
   it "should render text" do
     text = Munger::Render.to_text(@report)
     text.should_not have_tag('table')

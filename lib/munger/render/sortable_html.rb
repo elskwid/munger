@@ -36,15 +36,18 @@ module Munger  #:nodoc:
               @report.columns.each do |column|
                 # TODO: Should be able to see if a column is 'sortable'
                 # Assume all columns are sortable here - for now.
-                sorted_state = 'unsorted'
-                direction = 'asc'
+                state = 'unsorted'
+                order = 'desc'
+                direction_class = ""
+
                 if [column.to_s, @report.column_data_field(column)].include?(@options[:sort])
-                  sorted_state = "sorted"
-                  direction = @options[:order] == 'asc' ? 'desc' : 'asc'
-                  direction_class = "sorted-#{direction}"
+                  state = "sorted"
+                  order = @options[:order] || 'asc'
+                  direction_class = "sorted-#{order}"
                 end
-                new_params = @options[:params].merge({'sort' => @report.column_data_field(column),'order' => direction})
-                x.th(:class => "columnTitle #{sorted_state} #{direction_class}" ) do 
+
+                new_params = @options[:params].merge({'sort' => @report.column_data_field(column),'order' => (order == 'asc' ? 'desc' : 'asc')})
+                x.th(:class => "columnTitle #{state} #{direction_class}") do 
                    # x << @report.column_title(column) 
                    x << "<a href=\"#{@options[:url]}?#{create_querystring(new_params)}\">#{@report.column_title(column)}</a>"
                  end
