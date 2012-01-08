@@ -166,7 +166,7 @@ describe Munger::Data do
     array = @data.to_a([:name, :age])
     array.should be_a_kind_of(Array)
     array.first.size.should eql(2)
-    scotts = array.select { |a| a.include? ('Scott') }
+    scotts = array.select { |a| a.include?('Scott') }
     scotts.first.should include('Scott', 23)
   end
   
