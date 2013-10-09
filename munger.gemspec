@@ -33,4 +33,8 @@ Gem::Specification.new do |s|
                "spec/munger/render/csv_spec.rb",
                "spec/munger/render/html_spec.rb",
                "spec/munger/render/text_spec.rb"]
+
+  s.add_dependency "builder"
+  s.add_development_dependency "rake"
+  s.add_development_dependency "minitest", "~>5.0.8"
 end

@@ -2,15 +2,19 @@ PATH
   remote: .
   specs:
     munger (0.1.4.2)
+      builder
 
 GEM
   remote: https://rubygems.org/
   specs:
+    builder (3.2.2)
+    minitest (5.0.8)
     rake (10.0.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  minitest (~> 5.0.8)
   munger!
   rake
